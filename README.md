@@ -5,7 +5,7 @@ The LetterCounter project is a Java application that reads a file and counts the
 ## Usage 
 To use the LetterCounter application, follow these steps:
 
-+ Download LatterCounter.zip project or pull request from https://github.com/DinaSkills/Java-project.git
++ Download LatterCounter.zip project or pull request from https://github.com/DinaSkills/LetterCounter.git
 + Unzip project in desired destination
 + Open the command prompt or terminal.
 + Navigate to the directory enter following command: -jar  dist/LetterCounter.jar 
