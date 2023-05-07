@@ -23,16 +23,12 @@ public class FileXml extends FileProcessor {
         * Constructs a FileXml object with the specified file path.
         * 
         * @param filepath the path of the file to be processed
-     * @throws java.io.IOException
-     * @throws javax.xml.parsers.ParserConfigurationException
-     * @throws org.xml.sax.SAXException
       */
      
     
-     public FileXml(Path filepath) throws IOException, ParserConfigurationException, SAXException{
+     public FileXml(Path filepath){
          super(filepath);
          processFile();
-         showResult();
      }
      
       /**
@@ -49,25 +45,31 @@ public class FileXml extends FileProcessor {
 */
       
     
-    private void processFile() throws IOException, ParserConfigurationException, SAXException {
-        
+    private void processFile() {
+        try{ 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         DocumentBuilder builder = factory.newDocumentBuilder();
 
-        Document document = builder.parse(new File(filepath.toString()));
+        Document document = builder.parse(new File(this.filepath.toString()));
          
-           NodeList nodes = document.getDocumentElement().getChildNodes();
-           
+        NodeList nodes = document.getDocumentElement().getChildNodes();
+        String elementValue = null;
         for (int i = 0; i < nodes.getLength(); i++) {
-            if (nodes.item(i).getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
-                Element element = (Element) nodes.item(i);
-                String elementValue = element.getTextContent().toLowerCase();
-                countVowels(elementValue);
-            }
-            
-           String fileContent = getFileContent(filepath.toString());
-           countConsonants(fileContent);
+                if (nodes.item(i).getNodeType() == org.w3c.dom.Node.ELEMENT_NODE) {
+                    Element element = (Element) nodes.item(i);
+                    elementValue = element.getTextContent().toLowerCase();    
+                }  
         }
-    }
+          String fileContent = getFileContent(this.filepath.toString());
+          
+           countVowels(elementValue);  
+           countConsonants(fileContent);
+           showResult();
+        
+        }catch (IOException | ParserConfigurationException | SAXException e) {
+                    System.out.println(e.getMessage());
+
+            }
+}
 }

@@ -22,7 +22,6 @@ public class FileTxt extends FileProcessor {
         * 
         * @param filepath the path of the file to be read
         * @return displays number of vowels and consonants in a txt file
-
         * @throws IOException if there is an I/O error while reading the file
      */
 

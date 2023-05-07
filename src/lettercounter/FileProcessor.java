@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
  * @author Dina
  */
 public class FileProcessor {
@@ -22,7 +21,6 @@ public class FileProcessor {
     
      /**
         * Constructs a FileProcessor object with the specified file path.
-        * 
         * @param filepath the path of the file to be processed
       */
      
@@ -34,7 +32,6 @@ public class FileProcessor {
      
      /**
         * Reads the content of the file and returns it as a string.
-        * 
         * @param filepath the path of the file to be read
         * @return the content of the file as a string
         * @throws IOException if there is an I/O error while reading the file
@@ -59,35 +56,33 @@ public class FileProcessor {
     }
     
     /**
-        * Counts the number of vowels in the specified text.
-        * 
+        * Counts the number of vowels in the specified text. 
         * @param text the text in which to count vowels
         * @return the number of vowels in the text
     */
      
      protected int countVowels(String text) {
         for (char c : text.toCharArray()) {
-            if (VOWELS.contains(c)) {
-                NumVowels++;
+            if (this.VOWELS.contains(c)) {
+                this.NumVowels++;
             }
         }
-         return NumVowels;
+         return this.NumVowels;
     }
       
     /**
         * Counts the number of vowels in the specified text.
-        * 
         * @param text the text in which to count consonants
         * @return the number of consonants in the text
     */
      
      protected int countConsonants(String text) {
         for (char c : text.toCharArray()) {
-            if (!Character.isWhitespace(c) && !VOWELS.contains(c)) {
-               NumConsonants++;
+            if (!Character.isWhitespace(c) && !this.VOWELS.contains(c)) {
+               this.NumConsonants++;
             }
         }
-         return NumConsonants;
+         return this.NumConsonants;
     }
     
  
@@ -99,11 +94,12 @@ public class FileProcessor {
      
 
     protected void showResult() {
-        fileName = filepath.getFileName().toString();  
-
-        System.out.println("Document " + fileName + "contains:"  );
-        System.out.println("Vowels: " + NumVowels);
-        System.out.println("Consonants: " + NumConsonants);
+        this.fileName = this.filepath.getFileName().toString();  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+        System.out.println("Document " + this.fileName + " contains:"  );
+        System.out.println("Vowels: " + this.NumVowels);
+        System.out.println("Consonants: " + this.NumConsonants);
     }
     
 }
